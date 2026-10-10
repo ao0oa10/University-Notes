@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ملخصات</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f5fb;
+      margin: 0;
+      color: #1c2840;
+      text-align: center;
+    }
+    header {
+      background: #263b86;
+      color: white;
+      padding: 25px;
+    }
+    .card {
+      background: white;
+      margin: 25px auto;
+      padding: 25px;
+      border-radius: 16px;
+      max-width: 550px;
+      width: 80%;
+      box-shadow: 0 4px 15px #0001;
+    }
+    button {
+      display: block;
+      width: 100%;
+      margin: 12px 0;
+      padding: 15px;
+      background: #e8edfa;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+    button:hover { background: #ccd9f8; }
+    .primary {
+      background: #263b86;
+      color: white;
+    }
+    #quiz { display: none; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>ملخصات 🎓</h1>
+    <p>ملخصات واختبارات تفاعلية</p>
+  </header>
+
+  <section id="home" class="card">
+    <h2>مرحباً بك!</h2>
+    <p>اختر المادة وابدأ المراجعة</p>
+    <button class="primary" onclick="openQuiz()">
+      مقدمة في القانون
+    </button>
+  </section>
+
+  <section id="quiz" class="card">
+    <h2>مقدمة في القانون</h2>
+    <p>ما وظيفة القانون الأساسية؟</p>
+
+    <button onclick="answer(false)">
+      تنظيم التجارة فقط
+    </button>
+
+    <button onclick="answer(true)">
+      تنظيم العلاقات في المجتمع
+    </button>
+
+    <button onclick="answer(false)">
+      تحديد أسعار المنتجات فقط
+    </button>
+
+    <h3 id="result"></h3>
+
+    <button class="primary" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+  </section>
+
+  <script>
+    function openQuiz() {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("quiz").style.display = "block";
+    }
+
+    function answer(correct) {
+      document.getElementById("result").textContent =
+        correct ? "✅ إجابة صحيحة!" : "❌ حاول مرة أخرى";
+    }
+
+    function goHome() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("home").style.display = "block";
+      document.getElementById("result").textContent = "";
+    }
+  </script>
+</body>
+</html>
